@@ -10,9 +10,12 @@ import { Menu } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { href: '/', label: 'Gallery' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Obras' },
+  { href: '/about', label: 'Proyecto Destacado' },
+  { href: '/about', label: 'Poética' },
+  { href: '/about', label: 'Curriculum' },
+  { href: '/contact', label: 'Contacto' },
+  { href: '/contact', label: 'Proxima Serie' },
 ];
 
 export function Navbar() {
@@ -38,14 +41,14 @@ export function Navbar() {
     };
   }, [prevScrollPos]);
 
-  return (
+  return ( 
     <header 
       className={cn(
-        "fixed -translate-x-1/2 left-1/2 z-50 w-1/2 rounded-full backdrop-blur transition-transform duration-300 ease-in-out",
+        "fixed -translate-x-1/2 left-1/2 z-50 w-fit border border-gray-300 bg-white/20 rounded-full backdrop-blur transition-transform duration-300 ease-in-out",
         visible ? "top-3 translate-y-0" : "top-3 -translate-y-[calc(100%_+_0.75rem)]" // 0.75rem is for top-3 (12px)
       )}
     >
-      <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex gap-10 h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
         <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
           {navLinks.map((link) => (
@@ -53,7 +56,7 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary px-3 py-2 rounded-md",
+                "text-sm text-nowrap font-medium transition-colors hover:text-primary px-3 py-2 rounded-md",
                 pathname === link.href ? "text-primary bg-primary/10" : "text-muted-foreground"
               )}
             >

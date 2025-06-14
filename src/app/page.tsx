@@ -1,3 +1,4 @@
+
 import { getArtworks } from '@/lib/data';
 import { ArtworkCard } from '@/components/ArtworkCard';
 import { SiteLayout } from '@/components/SiteLayout';
@@ -13,23 +14,23 @@ export const metadata: Metadata = {
 };
 
 const HeroSection = () => (
-  <section 
+  <section
     className="h-screen flex flex-col items-center justify-center bg-background relative overflow-hidden"
     aria-labelledby="artist-name"
   >
     <div className="relative z-10 p-4">
-      <h1 
+      <h1
         id="artist-name"
         className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-headline font-bold text-primary tracking-tighter leading-none"
       >
         UMBRA
       </h1>
-      <p className="w-full text-end sm:text-xl md:text-2xl font-headline text-primary/70 tracking-wider mt-2">
-        ARTISTA
+      <p className="w-full text-end sm:text-xl md:text-2xl font-headline font-light text-primary tracking-widest uppercase mt-2">
+        PAULA GONZÁLEZ
       </p>
     </div>
-    <div className="absolute inset-0 z-0 opacity-20">
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="subtlePattern" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M5 0 V10 M0 5 H10" stroke="currentColor" strokeWidth="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#subtlePattern)" /></svg>
+    <div className="absolute inset-0 z-0 opacity-50">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="subtlePattern" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M5 0 V10 M0 5 H10" stroke="currentColor" strokeWidth="0.5" /></pattern></defs><rect width="100%" height="100%" fill="url(#subtlePattern)" /></svg>
     </div>
   </section>
 );
@@ -84,22 +85,24 @@ export default function GalleryPage() {
 
   return (
     <SiteLayout hero={<HeroSection />}>
-      <div className="space-y-8">
-        <h2 className="text-4xl font-headline font-bold text-center text-primary">Artwork Gallery</h2>
-        <p className="text-lg text-center text-muted-foreground max-w-2xl mx-auto">
-          Discover a curated collection of unique textile art pieces, each telling its own story through fiber and thread.
-        </p>
-        {artworks.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
-            {artworks.map((artwork, index) => (
-              <ArtworkCard key={artwork.id} artwork={artwork} index={index} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-center text-muted-foreground">No artworks to display at the moment. Please check back later.</p>
-        )}
+      <div className="space-y-16"> {/* Increased spacing between gallery and featured artwork */}
+        <div>
+          <h2 className="text-4xl font-headline font-bold text-center text-primary mb-8">Galería de Obras</h2> {/* mb-8 for spacing below title */}
+          <p className="text-lg text-center text-muted-foreground max-w-2xl mx-auto mb-10"> {/* mb-10 for spacing below paragraph */}
+            Descubre una cuidada colección de piezas únicas de arte textil, cada una contando su propia historia a través de la fibra y el hilo.
+          </p>
+          {artworks.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
+              {artworks.map((artwork, index) => (
+                <ArtworkCard key={artwork.id} artwork={artwork} index={index} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-muted-foreground">No hay obras para mostrar en este momento. Por favor, vuelve más tarde.</p>
+          )}
+        </div>
+        <FeaturedArtworkSection />
       </div>
-      <FeaturedArtworkSection />
     </SiteLayout>
   );
 }
