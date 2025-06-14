@@ -2,6 +2,10 @@ import { getArtworks } from '@/lib/data';
 import { ArtworkCard } from '@/components/ArtworkCard';
 import { SiteLayout } from '@/components/SiteLayout';
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Artwork Gallery - Threadfolio by UMBRA',
@@ -30,6 +34,51 @@ const HeroSection = () => (
   </section>
 );
 
+const FeaturedArtworkSection = () => {
+  const artworks = getArtworks();
+  const featuredArtwork = artworks[0]; // Using the first artwork as featured
+
+  if (!featuredArtwork) return null;
+
+  return (
+    <section className="py-12 md:py-20 bg-card">
+      <div className="container mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center text-primary mb-10">Obra Destacada</h2>
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-xl">
+            <Image
+              src={featuredArtwork.imageUrl}
+              alt={featuredArtwork.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+              data-ai-hint={featuredArtwork.dataAiHint || 'textile artwork'}
+            />
+          </div>
+          <div className="space-y-6">
+            <h3 className="text-2xl lg:text-3xl font-headline font-semibold text-foreground">{featuredArtwork.title}</h3>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              {featuredArtwork.statement.substring(0, 200)}{featuredArtwork.statement.length > 200 ? '...' : ''}
+            </p>
+            <div className="space-y-2">
+              <p><strong className="text-foreground">Materiales:</strong> {featuredArtwork.materials.join(', ')}</p>
+              <p><strong className="text-foreground">Dimensiones:</strong> {featuredArtwork.dimensions}</p>
+              <p><strong className="text-foreground">Año:</strong> {featuredArtwork.year}</p>
+            </div>
+            <Button asChild size="lg" className="mt-4 group">
+              <Link href={`/artwork/${featuredArtwork.slug}`}>
+                Ver Detalles
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
 export default function GalleryPage() {
   const artworks = getArtworks();
 
@@ -50,6 +99,7 @@ export default function GalleryPage() {
           <p className="text-center text-muted-foreground">No artworks to display at the moment. Please check back later.</p>
         )}
       </div>
+      <FeaturedArtworkSection />
     </SiteLayout>
   );
 }
