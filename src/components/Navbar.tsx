@@ -50,7 +50,6 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto flex gap-10 h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
         <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
           {navLinks.map((link) => (
             <Link
@@ -65,6 +64,7 @@ export function Navbar() {
             </Link>
           ))}
         </nav>
+        
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
