@@ -21,7 +21,16 @@ const HeroSection = () => (
     aria-labelledby="artist-name"
   >
     <div className="relative z-10 p-4">
-      <Umbra />
+        <div className="hidden md:block">
+          <Umbra />
+        </div>
+
+        <div className="md:hidden">
+          <Title className="text-[5rem]">
+            UMBRA
+          </Title>
+        </div>
+  
       <p className="w-full text-end sm:text-xl md:text-2xl text-primary tracking-widest mt-2 uppercase">
         Paula Gonzaléz
       </p>
@@ -57,8 +66,8 @@ const HeroSection = () => (
 );
 
 const AboutMeSection = () => (
-  <section className="py-12 md:py-20">
-    <div className="container px-4 md:px-0 mx-auto">
+  <section className="py-12 md:py-20" id="sobre-mi">
+    <div className="container px-4 mx-auto">
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="space-y-4">
           <h2 className="text-4xl font-bold mb-6">Presentación</h2>
@@ -93,12 +102,12 @@ const AboutMeSection = () => (
 const PoeticSection = () => {
   return (
     <>
-      <section className="relative overflow-hidden md:overflow-visible">
+      <section id="poetica" className="relative overflow-hidden md:overflow-visible">
         <div className="w-[350px] h-[350px] rounded-full bg-orange-200 blur-[100px] absolute top-10 left-0 "></div>
         <div className="w-[350px] h-[350px] rounded-full bg-orange-200  blur-[100px] absolute top-10 right-0 "></div>
 
         <div className="py-12 md:py-20">
-          <div className="container md:px-0 mx-auto">
+          <div className="container mx-auto">
             <div className="flex flex-col text-center align-center justify-center">
               {/* <Title>
                 <h2 className="mb-6">Poetica</h2>
@@ -139,9 +148,9 @@ const PoeticSection = () => {
 const LastProyect = () => {
   return (
     <>
-      <section className="relative bg-gray-50">
+      <section id="ngel" className="relative bg-gray-50 overflow-hidden">
         <div className="py-12 md:py-20">
-          <div className="px-4 md:px-0 container mx-auto">
+          <div className="px-4 container mx-auto">
             <div className="flex flex-col">
               <Title className="text-center ">
                 <h2>NGEL WAIKUL</h2>
@@ -248,7 +257,7 @@ export default function GalleryPage() {
       <div className="space-y-16 md:space-y-24 ">
         <AboutMeSection />
 
-        <section className="relative container mx-auto px-4 md:px-0">
+        <section id="serie" className="relative container mx-auto px-4">
           <Image
             width={220}
             height={220}
@@ -261,13 +270,6 @@ export default function GalleryPage() {
             height={220}
             src={"/assets/rollo-rojo.png"}
             className="absolute hidden md:block top-0 right-10 rotate-45 z-[-10]"
-            alt="rollos"
-          />
-          <Image
-            width={220}
-            height={220}
-            src={"/assets/rollo-verde.png"}
-            className="absolute hidden md:block top-40 right-52  z-[-10]"
             alt="rollos"
           />
 
