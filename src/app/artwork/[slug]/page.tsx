@@ -50,18 +50,18 @@ export default function ArtworkPage({ params }: ArtworkPageProps) {
 
   return (
     <SiteLayout>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl py-20 mx-auto">
         <Button variant="outline" asChild className="mb-6 group">
           <Link href="/">
             <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Gallery
+            Volver
           </Link>
         </Button>
         <article className="bg-card p-6 sm:p-8 rounded-lg shadow-lg">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md shadow-md">
               <Image
-                src={artwork.imageUrl}
+                src={`/assets/${artwork.imageUrl}`}
                 alt={artwork.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -71,14 +71,14 @@ export default function ArtworkPage({ params }: ArtworkPageProps) {
               />
             </div>
             <div>
-              <h1 className="text-3xl lg:text-4xl font-headline font-bold text-primary mb-2">{artwork.title}</h1>
+              <h1 className="text-3xl lg:text-4xl font-bold text-primary mb-2">{artwork.title}</h1>
               <p className="text-lg text-muted-foreground mb-4">{artwork.year}</p>
               
               <Separator className="my-6" />
 
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-xl font-semibold font-headline mb-2 text-foreground">Materials</h2>
+                  <h2 className="text-xl font-semibold mb-2 text-foreground">Materiales</h2>
                   <div className="flex flex-wrap gap-2">
                     {artwork.materials.map((material, index) => (
                       <Badge key={index} variant="secondary" className="text-sm">{material}</Badge>
@@ -86,7 +86,7 @@ export default function ArtworkPage({ params }: ArtworkPageProps) {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold font-headline mb-1 text-foreground">Dimensions</h2>
+                  <h2 className="text-xl font-semibold mb-1 text-foreground">Dimensiones</h2>
                   <p className="text-muted-foreground">{artwork.dimensions}</p>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function ArtworkPage({ params }: ArtworkPageProps) {
           <Separator className="my-8" />
 
           <div>
-            <h2 className="text-2xl font-semibold font-headline mb-3 text-foreground">Artist's Statement</h2>
+            <h2 className="text-2xl font-semibold mb-3 text-foreground">Descripcion</h2>
             <p className="text-foreground/80 leading-relaxed whitespace-pre-line">{artwork.statement}</p>
           </div>
         </article>

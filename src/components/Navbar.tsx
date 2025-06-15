@@ -12,10 +12,10 @@ import { useState, useEffect } from 'react';
 const navLinks = [
   { href: '/', label: 'Obras' },
   { href: '/about', label: 'Proyecto Destacado' },
-  { href: '/about', label: 'Poética' },
-  { href: '/about', label: 'Curriculum' },
-  { href: '/contact', label: 'Contacto' },
-  { href: '/contact', label: 'Proxima Serie' },
+  { href: '/poetica', label: 'Poética' },
+  { href: '/curriculum', label: 'Curriculum' },
+  { href: '/contacto', label: 'Contacto' },
+  { href: '/serie', label: 'Proxima Serie' },
 ];
 
 export function Navbar() {
@@ -64,7 +64,7 @@ export function Navbar() {
             </Link>
           ))}
         </nav>
-        
+          
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>

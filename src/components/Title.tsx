@@ -9,7 +9,7 @@ interface TitleProps {
 export const Title = ({ children, className }: TitleProps) => {
   return (
     <>
-        <div className={`${className} font-bold text-primary leading-none text-[5rem] sm:text-[10rem] md:text-[12rem]`}>
+        <div className={`${className} font-bold text-primary leading-none text-[2rem] sm:text-[6rem] md:text-[8rem]`}>
             {children}
         </div>
 

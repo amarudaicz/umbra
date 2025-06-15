@@ -17,7 +17,7 @@ export function ArtworkCard({ artwork, index }: ArtworkCardProps) {
           <CardHeader className="p-0">
             <div className="aspect-[3/4] relative w-full overflow-hidden">
               <Image
-                src={`/public/src/assets/${artwork.imageUrl}`}
+                src={`/assets/${artwork.imageUrl}`}
                 alt={artwork.title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
